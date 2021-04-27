@@ -1,0 +1,68 @@
+﻿@model Lab1Take3.Character
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Добавление персонажа в бой @ViewBag.BattleName</h1>
+
+<h4>Charater</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CharacterName" class="control-label"></label>
+                <input asp-for="CharacterName" class="form-control" />
+                <span asp-validation-for="CharacterName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CharacterLevel" class="control-label"></label>
+                <input asp-for="CharacterLevel" class="form-control" />
+                <span asp-validation-for="CharacterLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CharacterDamage" class="control-label"></label>
+                <input asp-for="CharacterDamage" class="form-control" />
+                <span asp-validation-for="CharacterDamage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CharacterHealth" class="control-label"></label>
+                <input asp-for="CharacterHealth" class="form-control" />
+                <span asp-validation-for="CharacterHealth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RaceId" class="control-label"></label>
+                <select asp-for="RaceId" class="form-control" asp-items="ViewBag.RaceId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeaponId" class="control-label"></label>
+                <select asp-for="WeaponId" class="form-control" asp-items="ViewBag.WeaponId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArmorId" class="control-label"></label>
+                <select asp-for="ArmorId" class="form-control" asp-items="ViewBag.ArmorId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SideId" class="control-label"></label>
+                <input asp-for="SideId" class="form-control" />
+                <span asp-validation-for="SideId" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" value="@ViewBag.BattleId" name="BattleId" />
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

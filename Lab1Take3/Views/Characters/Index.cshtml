@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Lab1Take3.Character>
+
+@{
+    ViewData["Title"] = "Персонажи в бою";
+}
+
+<h1>Персонажи в бою @ViewBag.BattleName</h1>
+
+<p>
+    @Html.ActionLink("Добавить нового персонажа", "Create", new { battleId = @ViewBag.BattleId })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CharacterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CharacterLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CharacterDamage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CharacterHealth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SideId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Armor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Battle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Race)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weapon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CharacterName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CharacterLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CharacterDamage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CharacterHealth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SideId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Armor.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Battle.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Race.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Weapon.Id)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
